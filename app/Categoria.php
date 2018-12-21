@@ -9,5 +9,5 @@ class Categoria extends Model
     //protected $table ='categrias';//por defecto el modelo de laravel hace referencia a la tabla en plural
     //protected $primaryKey = 'id'; //eloquent asume que la llave primaria es una columna llamada id
 
-    protected $fillable = ['nombre', 'descripcion', 'condicion'];//con  esta propiedad le decimos que a estos campos de la base de datos le vamos a asignar valores en masa 
+    protected $fillable=['nombre', 'descripcion', 'condicion'];//con  esta propiedad le decimos que a estos campos de la base de datos le vamos a asignar valores en masa 
 }

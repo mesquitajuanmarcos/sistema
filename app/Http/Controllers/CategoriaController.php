@@ -54,8 +54,6 @@ class CategoriaController extends Controller
     public function desactivar(Request $request)
     {
         $categoria = Categoria::findOrFail($request->id);
-        $categoria->nombre = $request->nombre;
-        $categoria->descripcion = $request->descripcion;
         $categoria->condicion = '0';
         $categoria->save();
     }
