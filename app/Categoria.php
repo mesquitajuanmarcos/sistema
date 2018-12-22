@@ -10,4 +10,10 @@ class Categoria extends Model
     //protected $primaryKey = 'id'; //eloquent asume que la llave primaria es una columna llamada id
 
     protected $fillable=['nombre', 'descripcion', 'condicion'];//con  esta propiedad le decimos que a estos campos de la base de datos le vamos a asignar valores en masa 
+
+    public function articulos()
+    {
+        return $this->hasMany('App\Articulo');
+    }
 }
+
