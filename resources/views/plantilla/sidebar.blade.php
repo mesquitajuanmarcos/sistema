@@ -18,6 +18,7 @@
                             </li>
                         </ul>
                     </li>
+
                     <li class="nav-item nav-dropdown">
                         <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-wallet"></i> Compras</a>
                         <ul class="nav-dropdown-items">
@@ -29,17 +30,21 @@
                             </li>
                         </ul>
                     </li>
-                    <li @click="menu=5" class="nav-item nav-dropdown">
+
+                    <li class="nav-item nav-dropdown">
                         <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-basket"></i> Ventas</a>
                         <ul class="nav-dropdown-items">
-                            <li class="nav-item">
+                            <li @click="menu=5"class="nav-item">
                                 <a class="nav-link" href="#"><i class="icon-basket-loaded"></i> Ventas</a>
                             </li>
                             <li @click="menu=6" class="nav-item">
-                                <a class="nav-link" href="#"><i class="icon-notebook"></i> Clientes</a>
+                                <a class="nav-link" href="#"><i class="icon-bag"></i> Clientes</a>
                             </li>
                         </ul>
                     </li>
+
+                    
+
                     <li class="nav-item nav-dropdown">
                         <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-people"></i> Acceso</a>
                         <ul class="nav-dropdown-items">
