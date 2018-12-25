@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+
 use App\Http\Controllers\Controller;
+//use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,7 +15,7 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function login(Request $request){//para evitar recargar la logica en una sola accion creamos otra funcion de validatelogin a la cual hacemos referencia desde esta funcion
+    public function login(Request $request){
         $this->validateLogin($request);        
 
         if (Auth::attempt(['usuario' => $request->usuario,'password' => $request->password,'condicion'=>1])){
@@ -38,5 +41,5 @@ class LoginController extends Controller
         $request->session()->invalidate();
         return redirect('/');
     }
-    
 }
+
