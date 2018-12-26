@@ -90,8 +90,8 @@
     </header>
 
     <div class="app-body">
-      
-         <!--@if(Auth::check())
+        
+        @if(Auth::check())
             @if (Auth::user()->idrol == 1)
                 @include('plantilla.sidebaradministrador')
             @elseif (Auth::user()->idrol == 2)
@@ -102,13 +102,10 @@
 
             @endif
 
-        @endif-->
-        @include('plantilla.sidebar')
+        @endif
         <!-- Contenido Principal -->
         @yield('contenido')
         <!-- /Fin del contenido principal -->
-
-       
     </div>   
     </div>
     <footer class="app-footer">
