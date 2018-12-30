@@ -48,6 +48,7 @@ Route::put('/user/activar', 'UserController@activar');
 
 Route::get('/', 'Auth\LoginController@showLoginForm');//para acceder la login
 Route::post('/login', 'Auth\LoginController@login')->name('login');
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
