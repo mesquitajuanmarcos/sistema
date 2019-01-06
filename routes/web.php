@@ -34,6 +34,7 @@ Route::get('/articulo/listarArticulo', 'articuloController@listarArticulo');
 Route::get('/cliente', 'ClienteController@index');
 Route::post('/cliente/registrar', 'ClienteController@store');
 Route::put('/cliente/actualizar', 'ClienteController@update');
+Route::get('/cliente/selectCliente', 'ClienteController@selectCliente');
 
 Route::get('/proveedor', 'ProveedorController@index');
 Route::post('/proveedor/registrar', 'ProveedorController@store');
@@ -60,3 +61,9 @@ Route::post('/ingreso/registrar', 'IngresoController@store');
 Route::put('/ingreso/desactivar', 'IngresoController@desactivar');
 Route::get('/ingreso/obtenerCabecera', 'IngresoController@obtenerCabecera');
 Route::get('/ingreso/obtenerDetalles', 'IngresoController@obtenerDetalles');
+
+Route::get('/venta', 'VentaController@index');
+Route::post('/venta/registrar', 'VentaController@store');
+Route::put('/venta/desactivar', 'VentaController@desactivar');
+Route::get('/venta/obtenerCabecera', 'VentaController@obtenerCabecera');
+Route::get('/venta/obtenerDetalles', 'VentaController@obtenerDetalles');
