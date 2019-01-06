@@ -5178,7 +5178,8 @@ __webpack_require__.r(__webpack_exports__);
       articulo: '',
       precio: 0,
       cantidad: 0,
-      descuento: 0
+      descuento: 0,
+      stock: 0
     };
   },
   components: {
@@ -5237,29 +5238,29 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
-    selectProveedor: function selectProveedor(search, loading) {
+    selectCliente: function selectCliente(search, loading) {
       var me = this;
       loading(true);
-      var url = '/proveedor/selectProveedor?filtro=' + search;
+      var url = '/cliente/selectCliente?filtro=' + search;
       axios.get(url).then(function (response) {
         var respuesta = response.data;
 
         q: search;
 
-        me.arrayProveedor = respuesta.proveedores;
+        me.arrayCliente = respuesta.clientes;
         loading(false);
       }).catch(function (error) {
         console.log(error);
       });
     },
-    getDatosProveedor: function getDatosProveedor(val1) {
+    getDatosCliente: function getDatosCliente(val1) {
       var me = this;
       me.loading = true;
-      me.idproveedor = val1.id;
+      me.idcliente = val1.id;
     },
     buscarArticulo: function buscarArticulo() {
       var me = this;
-      var url = '/articulo/buscarArticulo?filtro=' + me.codigo;
+      var url = '/articulo/buscarArticuloVenta?filtro=' + me.codigo;
       axios.get(url).then(function (response) {
         var respuesta = response.data;
         me.arrayArticulo = respuesta.articulos;
@@ -5267,6 +5268,8 @@ __webpack_require__.r(__webpack_exports__);
         if (me.arrayArticulo.length > 0) {
           me.articulo = me.arrayArticulo[0]['nombre'];
           me.idarticulo = me.arrayArticulo[0]['id'];
+          me.precio = me.arrayArticulo[0]['precio_venta'];
+          me.stock = me.arrayArticulo[0]['stock'];
         } else {
           me.articulo = 'No existe artículo';
           me.idarticulo = 0;
@@ -5343,7 +5346,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     listarArticulo: function listarArticulo(buscar, criterio) {
       var me = this;
-      var url = '/articulo/listarArticulo?buscar=' + buscar + '&criterio=' + criterio;
+      var url = '/articulo/listarArticuloVenta?buscar=' + buscar + '&criterio=' + criterio;
       axios.get(url).then(function (response) {
         var respuesta = response.data;
         me.arrayArticulo = respuesta.articulos.data;
