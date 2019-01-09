@@ -22,13 +22,15 @@ Route::put('/categoria/desactivar', 'CategoriaController@desactivar');
 Route::put('/categoria/activar', 'CategoriaController@activar');
 Route::get('/categoria/selectCategoria', 'CategoriaController@selectCategoria');
 
-Route::get('/articulo', 'articuloController@index');
-Route::post('/articulo/registrar', 'articuloController@store');
-Route::put('/articulo/actualizar', 'articuloController@update');
-Route::put('/articulo/desactivar', 'articuloController@desactivar');
-Route::put('/articulo/activar', 'articuloController@activar');
-Route::get('/articulo/buscarArticulo', 'articuloController@buscarArticulo');
-Route::get('/articulo/listarArticulo', 'articuloController@listarArticulo');
+Route::get('/articulo', 'ArticuloController@index');
+Route::post('/articulo/registrar', 'ArticuloController@store');
+Route::put('/articulo/actualizar', 'ArticuloController@update');
+Route::put('/articulo/desactivar', 'ArticuloController@desactivar');
+Route::put('/articulo/activar', 'ArticuloController@activar');
+Route::get('/articulo/buscarArticulo', 'ArticuloController@buscarArticulo');
+Route::get('/articulo/listarArticulo', 'ArticuloController@listarArticulo');
+Route::get('/articulo/buscarArticuloVenta', 'ArticuloController@buscarArticuloVenta');
+Route::get('/articulo/listarArticuloVenta', 'ArticuloController@listarArticuloVenta');
 
 
 Route::get('/cliente', 'ClienteController@index');
