@@ -65,8 +65,8 @@ Route::get('/ingreso/obtenerDetalles', 'IngresoController@obtenerDetalles');
 
 Route::get('/venta', 'VentaController@index');
 Route::post('/venta/registrar', 'VentaController@store');
-Route::put('/Venta/desactivar', 'VentaController@desactivar');
-Route::get('/Venta/obtenerCabecera', 'VentaController@obtenerCabecera');
-Route::get('/ventaVobtenerDetalles', 'entaController@obtenerDetalles');
+Route::put('/venta/desactivar', 'VentaController@desactivar');
+Route::get('/venta/obtenerCabecera', 'VentaController@obtenerCabecera');
+Route::get('/venta/obtenerDetalles', 'VentaController@obtenerDetalles');
 
 Route::get('/cliente/selectCliente', 'ClienteController@selectCliente');

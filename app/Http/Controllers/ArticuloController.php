@@ -62,7 +62,7 @@ class ArticuloController extends Controller
 
         return ['articulos' => $articulos];
     }
-
+ 
     public function listarArticuloVenta(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
