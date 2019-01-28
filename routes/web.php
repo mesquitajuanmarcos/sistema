@@ -71,5 +71,6 @@ Route::put('/venta/desactivar', 'VentaController@desactivar');
 Route::get('/venta/obtenerCabecera', 'VentaController@obtenerCabecera');
 Route::get('/venta/obtenerDetalles', 'VentaController@obtenerDetalles');
 Route::get('/venta/listarPdfventa','VentaController@listarPdfventa')->name('ventas_pdf');
+Route::get('/venta/pdf/{id}','VentaController@pdf')->name('venta_pdf');
 
 Route::get('/cliente/selectCliente', 'ClienteController@selectCliente');
