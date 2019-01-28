@@ -12,6 +12,9 @@
                         <button type="button" @click="mostrarDetalle()" class="btn btn-secondary">
                             <i class="icon-plus"></i>&nbsp;Nuevo
                         </button>
+                        <button type="button" @click="cargarventaPdf()" class="btn btn-info">
+                            <i class="icon-doc"></i>&nbsp;Reporte
+                        </button>
                     </div>
                     <!-- Listado-->
                     <template v-if="listado==1">
@@ -534,6 +537,11 @@
                 me.loading = true;
                 me.idcliente = val1.id;
             },
+
+            cargarventaPdf(){
+                window.open('http://127.0.0.1:8000/venta/listarPdfventa','_blank');
+            },
+
             buscarArticulo(){
                 let me=this;
                 var url= '/articulo/buscarArticuloVenta?filtro=' + me.codigo;

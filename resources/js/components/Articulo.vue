@@ -12,6 +12,9 @@
                         <button type="button" @click="abrirModal('articulo','registrar')" class="btn btn-secondary">
                             <i class="icon-plus"></i>&nbsp;Nuevo
                         </button>
+                        <button type="button" @click="cargarPdf()" class="btn btn-info">
+                            <i class="icon-doc"></i>&nbsp;Reporte
+                        </button>
                     </div>
                     <div class="card-body">
                         <div class="form-group row">
@@ -115,10 +118,10 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">Código</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="codigo" class="form-control" placeholder="Código de barras">
+                                        <input type="text" v-model="codigo" class="form-control" placeholder="Código de barras"> 
                                         <barcode :value="codigo" :options="{ format: 'EAN-13' }">
                                             Generando código de barras.    
-                                        </barcode>                                            
+                                        </barcode>                                       
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -170,9 +173,9 @@
 </template>
 
 <script>
-import VueBarcode from 'vue-barcode';
-
+    import VueBarcode from 'vue-barcode';
     export default {
+        props : ['ruta'],
         data (){
             return {
                 articulo_id: 0,
@@ -204,8 +207,8 @@ import VueBarcode from 'vue-barcode';
             }
         },
         components: {
-            'barcode': VueBarcode
-        },
+        'barcode': VueBarcode
+    },
         computed:{
             isActived: function(){
                 return this.pagination.current_page;
@@ -248,9 +251,12 @@ import VueBarcode from 'vue-barcode';
                     console.log(error);
                 });
             },
+            cargarPdf(){
+                window.open('http://127.0.0.1:8000/articulo/listarPdf','_blank');
+            },
             selectCategoria(){
                 let me=this;
-                var url= '/categoria/selectCategoria';
+                var url= this.ruta + '/categoria/selectCategoria';
                 axios.get(url).then(function (response) {
                     //console.log(response);
                     var respuesta= response.data;
@@ -274,7 +280,7 @@ import VueBarcode from 'vue-barcode';
                 
                 let me = this;
 
-                axios.post('/articulo/registrar',{
+                axios.post(this.ruta + '/articulo/registrar',{
                     'idcategoria': this.idcategoria,
                     'codigo': this.codigo,
                     'nombre': this.nombre,
@@ -295,7 +301,7 @@ import VueBarcode from 'vue-barcode';
                 
                 let me = this;
 
-                axios.put('/articulo/actualizar',{
+                axios.put(this.ruta + '/articulo/actualizar',{
                     'idcategoria': this.idcategoria,
                     'codigo': this.codigo,
                     'nombre': this.nombre,
@@ -327,7 +333,7 @@ import VueBarcode from 'vue-barcode';
                 if (result.value) {
                     let me = this;
 
-                    axios.put('/articulo/desactivar',{
+                    axios.put(this.ruta + '/articulo/desactivar',{
                         'id': id
                     }).then(function (response) {
                         me.listarArticulo(1,'','nombre');
@@ -366,7 +372,7 @@ import VueBarcode from 'vue-barcode';
                 if (result.value) {
                     let me = this;
 
-                    axios.put('/articulo/activar',{
+                    axios.put(this.ruta + '/articulo/activar',{
                         'id': id
                     }).then(function (response) {
                         me.listarArticulo(1,'','nombre');

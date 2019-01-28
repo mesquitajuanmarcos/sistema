@@ -46,6 +46,21 @@ class IngresoController extends Controller
             'ingresos' => $ingresos
         ];
     }
+
+    public function cargaringresoPdf(){
+        $ingresos = Ingreso::join('personas','ingresos.idproveedor','=','personas.id')
+            ->join('users','ingresos.idusuario','=','users.id')
+            ->select('ingresos.id','ingresos.tipo_comprobante','ingresos.serie_comprobante',
+            'ingresos.num_comprobante','ingresos.fecha_hora','ingresos.impuesto','ingresos.total',
+            'ingresos.estado','personas.nombre','users.usuario')
+            ->orderBy('ingresos.id', 'desc')->get();
+
+            $cont=Ingreso::count();
+
+        $pdf = \PDF::loadView('pdf.ingresospdf',['ingresos'=>$ingresos,'cont'=>$cont]);
+        return $pdf->download('ingreso.pdf');
+    }
+
     public function obtenerCabecera(Request $request){
         if (!$request->ajax()) return redirect('/');
 

@@ -31,6 +31,7 @@ Route::get('/articulo/buscarArticulo', 'ArticuloController@buscarArticulo');
 Route::get('/articulo/listarArticulo', 'ArticuloController@listarArticulo');
 Route::get('/articulo/buscarArticuloVenta', 'ArticuloController@buscarArticuloVenta');
 Route::get('/articulo/listarArticuloVenta', 'ArticuloController@listarArticuloVenta');
+Route::get('/articulo/listarPdf','ArticuloController@listarPdf')->name('articulos_pdf');
 
 
 Route::get('/cliente', 'ClienteController@index');
@@ -62,11 +63,13 @@ Route::post('/ingreso/registrar', 'IngresoController@store');
 Route::put('/ingreso/desactivar', 'IngresoController@desactivar');
 Route::get('/ingreso/obtenerCabecera', 'IngresoController@obtenerCabecera');
 Route::get('/ingreso/obtenerDetalles', 'IngresoController@obtenerDetalles');
+Route::get('/ingreso/listarpdfingresos','IngresoController@cargaringresoPdf')->name('ingreso_pdf');
 
 Route::get('/venta', 'VentaController@index');
 Route::post('/venta/registrar', 'VentaController@store');
 Route::put('/venta/desactivar', 'VentaController@desactivar');
 Route::get('/venta/obtenerCabecera', 'VentaController@obtenerCabecera');
 Route::get('/venta/obtenerDetalles', 'VentaController@obtenerDetalles');
+Route::get('/venta/listarPdfventa','VentaController@listarPdfventa')->name('ventas_pdf');
 
 Route::get('/cliente/selectCliente', 'ClienteController@selectCliente');

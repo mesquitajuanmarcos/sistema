@@ -12,6 +12,9 @@
                         <button type="button" @click="mostrarDetalle()" class="btn btn-secondary">
                             <i class="icon-plus"></i>&nbsp;Nuevo
                         </button>
+                        <button type="button" @click="cargaringresoPdf()" class="btn btn-info">
+                            <i class="icon-doc"></i>&nbsp;Reporte
+                        </button>
                     </div>
                     <!-- Listado-->
                     <template v-if="listado==1">
@@ -498,6 +501,11 @@
                     console.log(error);
                 });
             },
+
+            cargaringresoPdf(){
+                window.open('http://127.0.0.1:8000/ingreso/listarpdfingresos','_blank');
+            },
+
             selectProveedor(search,loading){
                 let me=this;
                 loading(true)

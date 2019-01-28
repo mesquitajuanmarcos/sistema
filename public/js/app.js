@@ -1936,8 +1936,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['ruta'],
   data: function data() {
     return {
       articulo_id: 0,
@@ -2015,9 +2019,12 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
+    cargarPdf: function cargarPdf() {
+      window.open('http://127.0.0.1:8000/articulo/listarPdf', '_blank');
+    },
     selectCategoria: function selectCategoria() {
       var me = this;
-      var url = '/categoria/selectCategoria';
+      var url = this.ruta + '/categoria/selectCategoria';
       axios.get(url).then(function (response) {
         //console.log(response);
         var respuesta = response.data;
@@ -2039,7 +2046,7 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       var me = this;
-      axios.post('/articulo/registrar', {
+      axios.post(this.ruta + '/articulo/registrar', {
         'idcategoria': this.idcategoria,
         'codigo': this.codigo,
         'nombre': this.nombre,
@@ -2059,7 +2066,7 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       var me = this;
-      axios.put('/articulo/actualizar', {
+      axios.put(this.ruta + '/articulo/actualizar', {
         'idcategoria': this.idcategoria,
         'codigo': this.codigo,
         'nombre': this.nombre,
@@ -2092,7 +2099,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (result) {
         if (result.value) {
           var me = _this;
-          axios.put('/articulo/desactivar', {
+          axios.put(_this.ruta + '/articulo/desactivar', {
             'id': id
           }).then(function (response) {
             me.listarArticulo(1, '', 'nombre');
@@ -2122,7 +2129,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (result) {
         if (result.value) {
           var me = _this2;
-          axios.put('/articulo/activar', {
+          axios.put(_this2.ruta + '/articulo/activar', {
             'id': id
           }).then(function (response) {
             me.listarArticulo(1, '', 'nombre');
@@ -3345,6 +3352,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -3445,6 +3455,9 @@ __webpack_require__.r(__webpack_exports__);
       }).catch(function (error) {
         console.log(error);
       });
+    },
+    cargaringresoPdf: function cargaringresoPdf() {
+      window.open('http://127.0.0.1:8000/ingreso/listarpdfingresos', '_blank');
     },
     selectProveedor: function selectProveedor(search, loading) {
       var me = this;
@@ -5141,6 +5154,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -5262,6 +5278,9 @@ __webpack_require__.r(__webpack_exports__);
       var me = this;
       me.loading = true;
       me.idcliente = val1.id;
+    },
+    cargarventaPdf: function cargarventaPdf() {
+      window.open('http://127.0.0.1:8000/venta/listarPdfventa', '_blank');
     },
     buscarArticulo: function buscarArticulo() {
       var me = this;
@@ -44993,6 +45012,23 @@ var render = function() {
               _c("i", { staticClass: "icon-plus" }),
               _vm._v(" Nuevo\n                ")
             ]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-info",
+              attrs: { type: "button" },
+              on: {
+                click: function($event) {
+                  _vm.cargarPdf()
+                }
+              }
+            },
+            [
+              _c("i", { staticClass: "icon-doc" }),
+              _vm._v(" Reporte\n                ")
+            ]
           )
         ]),
         _vm._v(" "),
@@ -47037,6 +47073,23 @@ var render = function() {
               [
                 _c("i", { staticClass: "icon-plus" }),
                 _vm._v(" Nuevo\n                ")
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-info",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    _vm.cargaringresoPdf()
+                  }
+                }
+              },
+              [
+                _c("i", { staticClass: "icon-doc" }),
+                _vm._v(" Reporte\n                ")
               ]
             )
           ]),
@@ -50660,6 +50713,23 @@ var render = function() {
               [
                 _c("i", { staticClass: "icon-plus" }),
                 _vm._v(" Nuevo\n                ")
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-info",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    _vm.cargarventaPdf()
+                  }
+                }
+              },
+              [
+                _c("i", { staticClass: "icon-doc" }),
+                _vm._v(" Reporte\n                ")
               ]
             )
           ]),
