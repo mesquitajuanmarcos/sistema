@@ -267,7 +267,7 @@
         methods : {
             listarVenta (page,buscar,criterio){
                 let me=this;
-                var url= this.ruta + '/venta?page=' + page + '&buscar='+ buscar + '&criterio='+ criterio;
+                var url= '/venta?page=' + page + '&buscar='+ buscar + '&criterio='+ criterio;
                 axios.get(url).then(function (response) {
                     var respuesta= response.data;
                     me.arrayVenta = respuesta.ventas.data;
@@ -278,7 +278,7 @@
                 });
             },
             pdfVenta(id){
-                window.open(this.ruta + '/venta/pdf/'+ id + ',' + '_blank');
+                window.open('http://127.0.0.1:8000/venta/pdf/' + id + ',' + '_blank');
             },
             cambiarPagina(page,buscar,criterio){
                 let me = this;
