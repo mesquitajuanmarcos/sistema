@@ -100,7 +100,9 @@
                 </tr>
             </thead>
             <tbody>
+                
                 @foreach ($ventas as $v)
+                $suma=0;
                 <tr>
                     <td>{{$v->usuario}}</td>
                     <td>{{$v->nombre}}</td>
@@ -112,6 +114,7 @@
                     <td>{{$v->total}}</td>
                     <td>{{$v->condicion?'Activo':'Desactivado'}}</td>
                 </tr>
+
                 @endforeach                                
             </tbody>
         </table>

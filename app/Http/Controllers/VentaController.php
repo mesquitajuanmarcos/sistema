@@ -48,13 +48,18 @@ class VentaController extends Controller
         ];
     }
 
-    public function listarPdfventa(){
+    public function listarPdfventa(){//para crear un reporte de todas las vtas
+       
         $ventas = Venta::join('personas','ventas.idcliente','=','personas.id')
             ->join('users','ventas.idusuario','=','users.id')
             ->select('ventas.id','ventas.tipo_comprobante','ventas.serie_comprobante',
             'ventas.num_comprobante','ventas.fecha_hora','ventas.impuesto','ventas.total',
-            'ventas.estado','personas.nombre','users.usuario')
+            'ventas.estado','personas.nombre','users.usuario') 
+          
+            
             ->orderBy('ventas.id', 'desc')->get();
+
+            
 
             $cont=Venta::count();
 
@@ -62,8 +67,8 @@ class VentaController extends Controller
         return $pdf->download('ventas.pdf');
     }
 
-
-    public function pdf(Request $request,$id){
+    
+    public function pdf(Request $request,$id){//para crear la factura de venta para imprimir al cliente
         $venta = Venta::join('personas','ventas.idcliente','=','personas.id')
         ->join('users','ventas.idusuario','=','users.id')
         ->select('ventas.id','ventas.tipo_comprobante','ventas.serie_comprobante',
