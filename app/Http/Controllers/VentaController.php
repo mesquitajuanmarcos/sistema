@@ -49,17 +49,18 @@ class VentaController extends Controller
     }
 
     public function listarPdfventa(){//para crear un reporte de todas las vtas
-       
+         
+            
         $ventas = Venta::join('personas','ventas.idcliente','=','personas.id')
             ->join('users','ventas.idusuario','=','users.id')
             ->select('ventas.id','ventas.tipo_comprobante','ventas.serie_comprobante',
             'ventas.num_comprobante','ventas.fecha_hora','ventas.impuesto','ventas.total',
             'ventas.estado','personas.nombre','users.usuario') 
-          
-            
-            ->orderBy('ventas.id', 'desc')->get();
+           ->orderBy('ventas.id', 'desc')->get();
 
-            
+                  
+           
+           
 
             $cont=Venta::count();
 

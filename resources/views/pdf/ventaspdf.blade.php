@@ -99,10 +99,11 @@
                         <th>Estado</th>
                 </tr>
             </thead>
+
             <tbody>
-                
+                    
                 @foreach ($ventas as $v)
-                $suma=0;
+                
                 <tr>
                     <td>{{$v->usuario}}</td>
                     <td>{{$v->nombre}}</td>
@@ -114,16 +115,33 @@
                     <td>{{$v->total}}</td>
                     <td>{{$v->condicion?'Activo':'Desactivado'}}</td>
                 </tr>
+                                
+                
+                @endforeach    
 
-                @endforeach                                
             </tbody>
         </table>
+        <?php $sum=0; ?>
+        @foreach ($ventas as $suma)
+
+                 
+        
+        
+        <?php $sum += $suma->total; ?>
+        
+                
+
+        @endforeach
+
+        
+        
+        
     </div>
     <div class="izquierda">
         <p><strong>Total de registros: </strong>{{$cont}}</p>
     </div>
     <div class="derecha">
-        <p><strong>Total de venta: </strong>{{}}</p>
+        <p><strong>Total de venta: </strong>{{ $sum }}</p>
     </div>   
 
    
